@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					A little fun with AFrame and AR.js
+				</section>
+				<section>I'm a Virtual Reality and Augmented Reality geek.</section>
+				<section>It can let people explore distant locations.<br/>
+						<iframe width="640" height="480"
+						src="https://www.youtube.com/embed/SCrkZOx5Q1M">
+						</iframe>
+				</section>
+				<section>It offers new ways to create.<br/>
+						<iframe width="640" height="480"
+						src="https://www.youtube.com/embed/TckqNdrdbgk">
+						</iframe>
+				</section>
+				<section>
+					<p>VR on the web</p>
+					<ul>
+						<li><a href="https://webvr.info/" target="_blank">WebVR</a> 
+						is a standard for presenting VR content on the web.</li>
+						<li><a href="https://aframe.io/" target="_blank">AFrame</a>
+						is a experimental JS library created by the Mozilla foundation 
+						to make creating VR content for the web easier.</li>
+					</ul>
+				</section>
+				<section>
+					<p>AFrame is an extention to HTML</p>
+					<ul>
+						<li>It's plain text</li>
+						<li>It has tags to define elements of the scene</li>
+						<li>It can be scripted with Javascript</li>
+					</ul>
+				</section>
+				<section>
+					<p>Here I try to do some live AFrame coding</p>
+					<img src="images/twod.png"/>
+					<img src="images/threed.png"/><br/> 
+				</section>
+				<section>
+					<p>More than cubes and spheres</p>
+					<ul>
+						<li><a href="https://poly.google.com/" target="_blank">Poly</a></li>
+						<li><a href="https://sketchfab.com/" target="_blank">Sketchfab</a></li>
+						<li>Others...</li>
+					</ul>
+				</section>
+				<section>
+					<p>From VR to AR</p>
+					<p><a href="https://github.com/jeromeetienne/AR.js" target="_blank">AR.js</a> 
+						is a javascript library for doing marker based augemnted reality 
+						applications for smartphones.</p>
+				</section>
+				<section>
+					<p>AR.js uses the camera to find a special marker in the 
+						video feed and maps the scene coordinates to 
+						marker.</p>
+					<img src="images/threed.png"/><br/>
+				</section>
+				<section>
+					<p>More live coding</p>
+				</section>
+				<section>
+					<p>Time for a smart phone demo! Go to 
+						<a href="https://cincynkyartandcode.github.io/aframeardemo/augdemo.html"
+							target="_blank">https://cincynkyartandcode.github.io/<br/>aframeardemo/augdemo.html</a></p>
+						<img src="images/demoqrcode.png"  height="256" width="256">
+				</section>
+				<section>
+					<ul>
+						<li>Different types of markers</li>
+						<li>Barcode markers</li>
+						<li>Multimarkers</li>
+						<li>Future! Markerless tracking</li>
+					</ul>
+				</section>
+				<section>
+					<p>Creating your own models</p>
+					<ul>
+						<li><a href="https://www.blender.org/" target="_blank">Blender</a></li>
+						<li><a href="https://ephtracy.github.io/" target="_blank">MagicaVoxel</a></li>
+					</ul>
+				</section>
+				<section>
+					<p>Thanks!</p>
+					<small>Presentation created with <a href="https://github.com/hakimel/reveal.js/">reveal.js</a></small>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
