@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Fractal</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<dl>
+						<dt>Fractal</dt>
+						<dd><img src="images/sierpinski-zoom41.gif" style="float: right">A complex geometric pattern exhibiting self-similarity in that 
+								small details of its structure viewed at any scale repeat 
+								elements of the overall pattern.</dd>
+					</dl>					
+				</section>
+				<section>
+					<div>
+						<img src="images/Levy_C_construction.png" style="float: right" width="30%">
+						Fractal curves are generated from an initial curve 
+						(often a regular polygon) and one or more replacement 
+						curves. Repeatedly, each line is replaced by a properly 
+						scaled copy of one of the replacement curves.
+					</div>	
+				</section>
+				<section>
+					<div>Let's draw a Lévy C curve</div>
+					<img src="images/390px-Levy_C_Curve.svg.png">
+				</section>
+				<section>
+					<div>Begin with drawing a simple line.</div>
+					<img src="images/Line Offset.svg" width="40%">
+					<pre><code data-trim data-noescape>
+						function offsetPoint(start, angle, distance) {
+							return p5.Vector
+								.fromAngle(radians(angle), distance)
+								.add(start);
+						}
+						function drawCurve(start, angle, distance) {
+							var endPt = offsetPoint(start, angle, distance);
+							line(start.x, start.y, endPt.x, endPt.y);
+						}
+					</code></pre>
+				</section>
+				<section>
+					<div>Replace the line with the right angle pattern.</div>
+					<img src="images/C Curve Process.svg">
+				</section>
+				<section>
+					<img src="images/Right Angle Construction.svg" width ="60%">
+					<pre><code data-trim data-noescape>				
+						var d2 = d1 * someScale; // <-- what's this number?
+						var midPt = offsetPoint(start, angle + 45, d2);
+						var endPt = offsetPoint(midPt, angle - 45, d2);
+						line(start.x, start.y, midPt.x, midPt.y);
+						line(midPt.x, midPt.y, endPt.x, endPt.y);
+					</code></pre>
+				</section>
+				<section>
+					<img src="images/d2math.jpg" width="60%">
+					<pre><code data-trim data-noescape>				
+						someScale = 0.7071069;
+					</code></pre>
+				</section>
+				<section>
+					<dl>
+						<dt>Recursive</dt>
+						<dd>Relating to or involving the repeated 
+							application of a rule, definition, or 
+							procedure to successive results.</dd>
+					</dl>
+					<pre><code data-trim data-noescape>				
+						function someFn(param) {
+							//...
+							someFn(newParam);
+							//...
+						}
+					</code></pre>	
+				</section>
+				<section>
+					<pre><code data-trim data-noescape>				
+						function drawCurve(start, angle, d1, replacements) {
+							if (replacements == 0) {
+								// draw the line
+							} else {
+								// call draw curve for each line in
+								// the pattern.
+								drawCurve(..., replacements - 1);
+							}
+						}					
+					</code></pre>	
+				</section>
+				<section>
+					<div>Let's look at some other curves.</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

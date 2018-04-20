@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Blender</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<p>A Brief Introduction to <a href="https://www.blender.org/" 
+						target="_blank">Blender</a></p>
+				</section>
+				<section>
+					<ul>
+						<li>Blender is a 3D modeling and rendering application</li>
+						<li>Oriented towards artistic uses like photo realistic 
+							images, animation for movies, or games</li>
+						<li>Free and open source</li>
+						<li>Commercial competitors are applications like 
+							<a href="https://www.autodesk.com/products/3ds-max/overview" 
+							target="_blank">3D Studio Max</a> or 
+							<a href="https://www.autodesk.com/products/maya/overview" 
+							target="_blank">Maya</a></li>
+					</ul>
+				</section>
+				<section>
+					<p><a href="https://www.blender.org/features/"
+						target="_blank">Features</a></p>
+						<iframe width="640" height="480"
+						src="https://www.youtube.com/embed/mIiY6aGefvI">
+						</iframe>
+				</section>
+				<section>
+					<p>Learning Blender</p>
+					<ul>
+						<li><a href="https://www.blender.org/support/"
+							target="_blank">Blender Support</a> has documentation 
+							and tutorials</li>
+						<li><a href = "https://www.google.com/search?q=Blender+3D+tutorial"
+							target="_blank">Lots of videos out there</a></li>
+						<li><a href="https://docs.blender.org/manual/en/dev/glossary/index.html"
+						target="_blank">Glossary of terminology</a></li>
+					</ul>
+				</section>
+				<section>
+					<p>Demo where I try to model something.</p>
+					<ul>
+						<li>Navigation</li>
+						<li>Object Mode</li>
+						<li>Edit Mode</li>
+						<li>Verticies, Edges, and Faces</li>
+						<li>Extrusion, Scaling, and Inset</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
