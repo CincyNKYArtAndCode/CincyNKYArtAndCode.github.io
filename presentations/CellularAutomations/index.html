@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Cellular Automata</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<dl>
+						<dt>Cellular Automata</dt>
+						<dd><img src="images/1and2dimensional.svg" style="float: right" width="30%">A type of 
+							simulation that is perfomed on a regular grid of cells containing 
+							discreet values. These values are often visualized as colored dots. 
+							The simulation advances in discrete time steps by using a set of 
+							fixed rules on the current generation of cell values to determine 
+							the next generation.</dd>
+					</dl>					
+				</section>
+				<section>
+					<div>
+						<img src="images/generations.svg" style="float: right" width="30%">
+						To determine the value a cell in the next genertation the rules 
+						look at the values of cells in a neighborhood around the cell 
+						in the current generation.
+					</div>	
+				</section>
+				<section>
+					<div>
+						One of the <a href="http://mathworld.wolfram.com/ElementaryCellularAutomaton.html" 
+						target="_blank">simplest automata</a> is on a 1D grid using binary values 
+						and a neighborhood of three cells.
+						One of the most well known 2D cellular automata is 
+						<a href="https://p5js.org/examples/simulate-game-of-life.html" target="_blank">
+							John Conway's Game of Life</a>.
+							However there are infinite varieties.
+					</div>	
+				</section>
+				<section>
+					<div>
+						However there are infinite varieties.<br/>
+						<img src="images/colorful.png" style="float: center" width="60%">
+					</div>	
+				</section>
+				<section>
+					<div>
+						<ul>
+						<li><a href="https://www.designboom.com/art/miguel-chevalier-k11origin-of-the-world-07-25-2014/" target="_blank">
+							They have been used for art exhibits</a>.</li>
+
+						<li><a href="https://blog.stephenwolfram.com/2017/06/oh-my-gosh-its-covered-in-rule-30s/" target="_blank">
+							Tiles on buildings</a>.</li>
+						</ul>
+					</div>	
+				</section>
+				<section>
+					<div>
+						<ul>
+						<li>Can we use something like this for blink?</li>
+						<li>How would interactivity work with CAs?</li>
+						<li>Probably going to require some experimentation.</li>
+						</ul>
+					</div>	
+				</section>
+				
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

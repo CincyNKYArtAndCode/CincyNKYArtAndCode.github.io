@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Enabling Gestures</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+            <div class="slides">
+                <section>
+                    <h3>Enabling Gestures/Unity</h3>
+                    <a target="_blank" href="https://vimeo.com/302898418">Video</a>
+                </section>
+                <section>
+                    <p>Developed Using</p>
+                    <ul>
+                        <li>C++</li>
+                        <li>Open Frameworks</li>
+                        <li>Kinect Library</li>
+                        <li>OpenCV library</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Consists of several disks made up of triangles.</p>
+                    <img src="images/disk.jpg" width="40%" />
+                </section>
+                <section>
+                    <img src="images/triangle.jpg" style="float: right" width="30%" />
+                    <pre><code>
+struct FlyingTriangle {
+
+    glm::vec3 position;
+    glm::vec3 edge1;
+    glm::vec3 edge2;
+
+    glm::vec2 normXNoise;
+    glm::vec2 normYNoise;
+    glm::vec2 normZNoise;
+    glm::vec2 distNoise;
+};
+                    </code></pre>
+                </section>
+                <section>
+                    <img src="images/displaced.jpg" style="float: right" width="30%" />
+                    <pre><code>auto dist = getNoise(tri.distNoise + sample);
+dist = glm::lerp(0.0f, dist, t);
+
+glm::vec3 normal;
+normal.x = getNoise(tri.normXNoise + sample);
+normal.y = getNoise(tri.normYNoise + sample);
+normal.z = ofNoise(tri.normZNoise + sample);
+normal = glm::normalize(normal);
+normal = glm::slerp(zAxis, normal, t);
+
+auto position = tri.position + normal * dist * 40;
+
+auto rot = glm::rotation(zAxis, normal);
+auto edge1 = glm::rotate(rot, tri.edge1);
+auto edge2 = glm::rotate(rot, tri.edge2);
+</code></pre>
+                </section>
+                <section>
+                    <img src="images/perlinnoise.png" style="float: right" width="30%" />
+                    <pre><code>
+glm::vec2 sample = glm::rotate(glm::vec2(1, 0), angle);
+//...
+normal.x = getNoise(tri.normXNoise + sample);
+normal.y = getNoise(tri.normYNoise + sample);
+normal.z = ofNoise(tri.normZNoise + sample);
+</code></pre>
+                </section>
+            </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
